@@ -1,0 +1,40 @@
+<main>
+    <div class="container">
+        <h1>Meu Carrinho</h1>
+        <hr>
+        <ul class="list-group mb-3" *ngFor="let prod of listaCarrinho">
+            <li class="list-group-item py-3">
+                <div class="row g-3">
+                    <div class="col-4 col-md-3 col-lg-2">
+                        <a href="">
+                            <img src="{{prod.imageUrl}}" class="img-thumbnail img-produto">
+                        </a>
+                    </div>
+                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
+                        <h4 class="text-decoration-none"><b>{{prod.name}}</b></h4>
+                        <h4>
+                            <small>{{prod.price | currency : 'BRL'}}</small>
+                        </h4>
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+        <hr>
+        <div class="total-div">
+            <h2 class="total">Total</h2>
+            <h2 class="valor">{{somaTotal() | currency : 'BRL'}}</h2>
+        </div>
+        <div class="alert alert-success alert-maiordez" role="alert" *ngIf="somaTotal() > 10">
+            Parabéns, sua compra foi realizada com sucesso!
+        </div>
+        <hr>
+        <div class="div-btn">
+            <button class="btn-finalizar" (click)="finalizarPedido()">Finalizar compra</button>
+        </div>
+    </div>
+</main>
